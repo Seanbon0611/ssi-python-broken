@@ -1,6 +1,6 @@
 # Single Step APM Instrumentation Exercise(Kubernetes)
 
-This tutorial demonstrates how to instrument a Node.js app for APM (Application Performance Monitoring) in a Kubernetes environment using Single Step APM Instrumentation.
+This tutorial demonstrates how to instrument a Python app for APM (Application Performance Monitoring) in a Kubernetes environment using Single Step APM Instrumentation.
 
 **Note: At the time of writing, Single Step APM Instrumentation for Kubernetes is in Preview status. Configurations may change once it reaches General Availability (GA).**
 
@@ -27,7 +27,7 @@ This tutorial demonstrates how to instrument a Node.js app for APM (Application 
     ```bash
     eval $(minikube -p minikube docker-env)
     ```
-    Navigate to the sandbox/apm/kubernetes/Nodejs/ssi-nextjs-kubernetes directory and build the Docker image:
+    Navigate to the root directory and build the Docker image:
     ```bash
     docker build -t ssi-py-sandbox:latest ./app/
     ```
@@ -39,7 +39,7 @@ This tutorial demonstrates how to instrument a Node.js app for APM (Application 
     ```
 
 5. ### Retrieve the Application Pod Name:
-    Find the name of your application pod. It should follow the naming convention ssi-js-sandbox-xxxxxxxx-xxxx:
+    Find the name of your application pod. It should follow the naming convention ssi-py-sandbox-xxxxxxxx-xxxx:
     ```bash
     kubectl -n ssi get pods
     ```
