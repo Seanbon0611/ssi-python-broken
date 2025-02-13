@@ -1,0 +1,25 @@
+---
+datadog:
+  apiKeyExistingSecret: datadog-agent
+  clusterName: kubernetes-sandbox
+  apm:
+    instrumentation:
+      enabled: true
+      libVersions:
+        js: "5"
+        java: "1"
+        dotnet: "3"
+        ruby: "2"
+  kubelet:
+    tlsVerify: false
+  kubeStateMetricsEnabled:
+    enabled: true
+  logs:
+    enabled: true
+    containerCollectAll: true
+  processAgent:
+    enabled: true
+    processCollection: true
+  systemProbe:
+    enableTCPQueueLength: false
+    collectDNSStats: false

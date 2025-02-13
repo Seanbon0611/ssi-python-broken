@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssi-py-sandbox
+  labels:
+    app: ssi-py-sandbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ssi-py-sandbox
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/ssi-py-sandbox.check_names: '["http_check"]'
+        ad.datadoghq.com/ssi-py-sandbox.init_configs: '[{}]'
+        ad.datadoghq.com/ssi-py-sandbox.instances: |
+          [
+            {
+              "name": "My APM Service",
+              "url": "http://%%host%%:%%port%%",
+              "timeout": 1
+            }
+          ]
+        ad.datadoghq.com/ssi-py-sandbox.logs: |
+          [
+            {
+              "source": "python",
+              "service": "ssi-py-sandbox"
+            }
+          ]
+      labels:
+        app: ssi-py-sandbox
+        tags.datadoghq.com/env: "sandbox"
+        tags.datadoghq.com/service: "ssi-py-sandbox"
+        tags.datadoghq.com/version: "1.0.0"
+    spec:
+      containers:
+        - name: ssi-py-sandbox
+          image: ssi-py-sandbox:latest
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 5000
+          env:
+          - name: DD_TRACE_STARTUP_LOGS
+            value: "true"
