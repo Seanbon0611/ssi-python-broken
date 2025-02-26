@@ -35,7 +35,7 @@ This tutorial demonstrates how to instrument a Python app for APM (Application P
 4. ### Deploy your application:
     Deploy the application using the Kubernetes manifest file:
     ```bash
-    kubectl -n ssi apply -f app_deployment.yaml
+    kubectl -n ssi apply -f app_deployment.yml
     ```
 
 5. ### Retrieve the Application Pod Name:
@@ -47,7 +47,7 @@ This tutorial demonstrates how to instrument a Python app for APM (Application P
 5. ### Generate Traffic
     Access the application pod and make a request to the root endpoint:
     ```bash
-    kubectl exec -it <your application pod> -- bash
+    kubectl exec -it -n ssi <your application pod> -- bash
     curl localhost:5000
     ```
 
